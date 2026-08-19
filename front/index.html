@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Scanner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <span>✦</span> ResumeAI
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#scanner">Scanner</a>
+            <a href="#how-it-works">How it works</a>
+        </nav>
+    </header>
+
+
+    <main id="home">
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <p class="badge">AI-POWERED RESUME ANALYSIS</p>
+
+                <h1>
+                    Match Your Resume<br>
+                    <span>With Your Dream Job</span>
+                </h1>
+
+                <p class="hero-text">
+                    Upload your resume and add a job description.
+                    Our AI will analyze your skills, identify missing
+                    requirements, and calculate your job match score.
+                </p>
+
+                <a href="#scanner" class="hero-button">
+                    Start Scanning ↓
+                </a>
+            </div>
+        </section>
+
+
+        <!-- Scanner Section -->
+        <section class="scanner-section" id="scanner">
+
+            <div class="section-heading">
+                <p class="small-title">RESUME ANALYZER</p>
+                <h2>Scan Your Resume</h2>
+                <p>
+                    Upload your resume and paste the job description
+                    you want to apply for.
+                </p>
+            </div>
+
+
+            <div class="scanner-container">
+
+                <!-- Resume Upload -->
+                <div class="input-card">
+
+                    <div class="card-icon">📄</div>
+
+                    <h3>Upload Resume</h3>
+
+                    <p class="card-description">
+                        Upload your PDF or DOCX resume
+                    </p>
+
+                    <div class="upload-box" id="uploadBox">
+
+                        <input
+                            type="file"
+                            id="resumeFile"
+                            accept=".pdf,.docx"
+                            hidden
+                        >
+
+                        <div class="upload-content">
+                            <div class="upload-icon">↑</div>
+
+                            <p>
+                                <strong>Click to upload</strong>
+                            </p>
+
+                            <span>
+                                PDF or DOCX (max 5MB)
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div id="fileName" class="file-name"></div>
+
+                </div>
+
+
+                <!-- Job Description -->
+                <div class="input-card">
+
+                    <div class="card-icon">📋</div>
+
+                    <h3>Job Description</h3>
+
+                    <p class="card-description">
+                        Paste the job description below
+                    </p>
+
+                    <textarea
+                        id="jobDescription"
+                        placeholder="Paste the job description here...
+
+Example:
+We are looking for a Python Developer with experience in Azure, SQL, Docker and Machine Learning..."
+                    ></textarea>
+
+                    <div class="character-count">
+                        <span id="characterCount">0</span> characters
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Scan Button -->
+            <div class="scan-area">
+
+                <button id="scanButton" class="scan-button">
+                    <span>🔍</span>
+                    Scan Resume
+                </button>
+
+                <p class="privacy-text">
+                    🔒 Your resume will be securely analyzed.
+                </p>
+
+            </div>
+
+
+            <!-- Loading -->
+            <div id="loading" class="loading hidden">
+
+                <div class="spinner"></div>
+
+                <h3>AI is analyzing your resume...</h3>
+
+                <p>
+                    Extracting skills and comparing them with the job description.
+                </p>
+
+            </div>
+
+
+            <!-- Results -->
+            <section id="results" class="results hidden">
+
+                <div class="results-heading">
+                    <p class="small-title">AI ANALYSIS</p>
+                    <h2>Your Resume Results</h2>
+                </div>
+
+
+                <!-- Score -->
+                <div class="score-card">
+
+                    <div class="score-circle">
+                        <span id="score">78</span>
+                        <small>%</small>
+                    </div>
+
+                    <div class="score-info">
+                        <h3>Resume Match Score</h3>
+
+                        <p id="scoreMessage">
+                            Your resume is a good match for this job.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Skills -->
+                <div class="results-grid">
+
+                    <div class="result-card matched">
+
+                        <h3>✅ Matched Skills</h3>
+
+                        <div id="matchedSkills" class="skills">
+                            <!-- JavaScript will add skills -->
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-card missing">
+
+                        <h3>❌ Missing Skills</h3>
+
+                        <div id="missingSkills" class="skills">
+                            <!-- JavaScript will add skills -->
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Improvement -->
+                <div class="improvement-card">
+
+                    <h3>📈 Skills You Should Improve</h3>
+
+                    <div id="improvementList">
+                        <!-- JavaScript will add recommendations -->
+                    </div>
+
+                </div>
+
+
+                <!-- Detailed Analysis -->
+                <div class="analysis-card">
+
+                    <h3>📊 Detailed Analysis</h3>
+
+                    <div class="analysis-row">
+                        <span>Technical Skills</span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 80%"></div>
+                        </div>
+                        <strong>80%</strong>
+                    </div>
+
+                    <div class="analysis-row">
+                        <span>Experience</span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 75%"></div>
+                        </div>
+                        <strong>75%</strong>
+                    </div>
+
+                    <div class="analysis-row">
+                        <span>Education</span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 90%"></div>
+                        </div>
+                        <strong>90%</strong>
+                    </div>
+
+                    <div class="analysis-row">
+                        <span>Projects</span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 70%"></div>
+                        </div>
+                        <strong>70%</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- How It Works -->
+        <section id="how-it-works" class="how-section">
+
+            <div class="section-heading">
+                <p class="small-title">HOW IT WORKS</p>
+                <h2>Three Simple Steps</h2>
+            </div>
+
+            <div class="steps">
+
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h3>Upload Resume</h3>
+                    <p>
+                        Upload your PDF or DOCX resume.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h3>Add Job Description</h3>
+                    <p>
+                        Paste the job description you're interested in.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h3>Get AI Analysis</h3>
+                    <p>
+                        See your match score, missing skills and recommendations.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>© 2026 ResumeAI — AI Resume Analysis</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
